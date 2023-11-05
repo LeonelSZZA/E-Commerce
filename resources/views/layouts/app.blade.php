@@ -15,6 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="shortcut icon" href="{{ asset('assets/img/ferrari-logo.png') }}" type="image/x-icon">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -24,7 +25,7 @@
     <div id="app">
         <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="#">
+                <a class="navbar-brand" href="{{ url('home') }}">
                     <img class="logotipo-icon" src="{{ asset('assets/img/ferrari-logo.png') }}" alt="Ferrari Logotipo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -95,54 +96,68 @@
                             </ul>
                         </div>
                         <!-- End Toggle: Dark Mode -->
-                        <li class="nav-item dropdown">
-                            <a class="btn dropdown-toggle text-white" id="red-bg" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                    fill="currentColor" class="bi bi-person-circle me-1" viewBox="0 0 16 16">
-                                    <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-                                    <path fill-rule="evenodd"
-                                        d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
-                                </svg>
-                                {{ Auth::user()->name }}
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <h6 class="dropdown-header">
-                                        {{ Auth::user()->name }}<br>
-                                        {{ Auth::user()->email }}
-                                    </h6>
+                        @guest
+                            @if (Route::has('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link me-3" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
-                                <li>
-                                    <hr class="dropdown-divider">
+                            @endif
+
+                            @if (Route::has('register'))
+                                <li class="nav-item">
+                                    <a class="btn text-white" id="red-bg" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
-                                <li><a class="dropdown-item" href="#">Profile</a></li>
-                                <li><a class="dropdown-item" href="#">Settings</a></li>
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <div class="d-grid mx-2">
-                                        <a class="btn btn-danger d-flex justify-content-center align-items-center"
-                                            href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                            @endif
+                        @else
+                            <li class="nav-item dropdown">
+                                <a class="btn dropdown-toggle text-white" id="red-bg" href="#" role="button"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                        fill="currentColor" class="bi bi-person-circle me-1" viewBox="0 0 16 16">
+                                        <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
+                                        <path fill-rule="evenodd"
+                                            d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
+                                    </svg>
+                                    {{ Auth::user()->name }}
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li>
+                                        <h6 class="dropdown-header">
+                                            {{ Auth::user()->name }}<br>
+                                            {{ Auth::user()->email }}
+                                        </h6>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li>
+                                        <hr class="dropdown-divider">
+                                    </li>
+                                    <li>
+                                        <div class="d-grid mx-2">
+                                            <a class="btn btn-danger d-flex justify-content-center align-items-center"
+                                                href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
-                                                fill="currentColor" class="bi bi-box-arrow-in-right me-1"
-                                                viewBox="0 0 16 16">
-                                                <path fill-rule="evenodd"
-                                                    d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
-                                                <path fill-rule="evenodd"
-                                                    d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
-                                            </svg>
-                                            {{ __('Logout') }}
-                                        </a>
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST"
-                                            class="d-none">
-                                            @csrf
-                                        </form>
-                                    </div>
-                                </li>
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
+                                                    fill="currentColor" class="bi bi-box-arrow-in-right me-1"
+                                                    viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M6 3.5a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-2a.5.5 0 0 0-1 0v2A1.5 1.5 0 0 0 6.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-8A1.5 1.5 0 0 0 5 3.5v2a.5.5 0 0 0 1 0v-2z" />
+                                                    <path fill-rule="evenodd"
+                                                        d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
+                                                </svg>
+                                                {{ __('Logout') }}
+                                            </a>
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                                class="d-none">
+                                                @csrf
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endguest
                             </ul>
                         </li>
                     </ul>
