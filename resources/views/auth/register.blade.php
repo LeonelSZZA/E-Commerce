@@ -27,7 +27,7 @@
                                     <label for="lastname" class="form-label">{{ __('Last Name') }}</label>
                                     <input id="lastname" type="lastname"
                                         class="form-control @error('lastname') is-invalid @enderror" name="lastname"
-                                        value="{{ old('lastname') }}" required autocomplete="lastname" autofocus>
+                                        value="{{ old('lastname') }}" required autocomplete="lastname">
                                     @error('lastname')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
@@ -35,30 +35,33 @@
                                     @enderror
                                 </div>
                             </div>
+                            <!-- Email Address -->
+                            <label for="email" class="form-label mt-3">{{ __('Email Address') }}</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
+                                name="email" value="{{ old('email') }}" required autocomplete="email">
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
                             <div class="row mt-3">
                                 <div class="col-md-6">
-                                    <!-- Email Address -->
-                                    <label for="email" class="form-label">{{ __('Email Address') }}</label>
-                                    <input id="email" type="email"
-                                        class="form-control @error('email') is-invalid @enderror" name="email"
-                                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                    @error('email')
+                                    <!-- Password -->
+                                    <label for="password" class="form-label">{{ __('Password') }}</label>
+                                    <input id="password" type="password"
+                                        class="form-control @error('password') is-invalid @enderror" name="password"
+                                        required autocomplete="new-password">
+                                    @error('password')
                                         <span class="invalid-feedback" role="alert">
                                             <strong>{{ $message }}</strong>
                                         </span>
                                     @enderror
                                 </div>
                                 <div class="col-md-6">
-                                    <!-- Password -->
-                                    <label for="password" class="form-label">{{ __('Password') }}</label>
-                                    <input id="password" type="password"
-                                        class="form-control @error('password') is-invalid @enderror" name="password"
-                                        required autocomplete="current-password">
-                                    @error('password')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
-                                        </span>
-                                    @enderror
+                                    <!-- Confirm Password -->
+                                    <label for="password-confirm" class="form-label">{{ __('Confirm Password') }}</label>
+                                    <input id="password-confirm" type="password" class="form-control"
+                                        name="password_confirmation" required autocomplete="new-password">
                                 </div>
                             </div>
                             <!-- Register -->
@@ -74,7 +77,7 @@
                                             <path fill-rule="evenodd"
                                                 d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                                         </svg>
-                                        {{ __('Register') }}
+                                        <b>{{ __('Register') }}</b>
                                     </button>
                                 </div>
                             </div>
@@ -92,7 +95,7 @@
                             </div>
                             <div class="d-grid gap-2 mb-2">
                                 <button class="btn d-flex justify-content-center align-items-center text-white"
-                                    style="background-color: #dd4b39;" type="submit">
+                                    style="background-color: #dd4b39;" type="button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                         fill="currentColor" class="bi bi-google me-2" viewBox="0 0 16 16">
                                         <path
@@ -101,7 +104,7 @@
                                     Sign Up With Google
                                 </button>
                                 <button class="btn d-flex justify-content-center align-items-center text-white mt-2"
-                                    style="background-color: #3b5998;" type="submit">
+                                    style="background-color: #3b5998;" type="button">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                         fill="currentColor" class="bi bi-facebook me-2" viewBox="0 0 16 16">
                                         <path

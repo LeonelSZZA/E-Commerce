@@ -105,7 +105,8 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="btn text-white" id="red-bg" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="btn text-white" id="red-bg"
+                                        href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -123,7 +124,7 @@
                                 <ul class="dropdown-menu">
                                     <li>
                                         <h6 class="dropdown-header">
-                                            {{ Auth::user()->name }}<br>
+                                            {{ Auth::user()->name }} {{ Auth::user()->lastname }}<br>
                                             {{ Auth::user()->email }}
                                         </h6>
                                     </li>
