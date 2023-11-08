@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use Laravel\Socialite\Facades\Socialite;
 use App\Models\User;
@@ -19,24 +20,13 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/google-auth/redirect', function () {
-    return Socialite::driver('google')->redirect();
-});
+Route::get('/google-auth/redirect', [AuthController::class, 'redirectToGoogle'])->name('redirectToGoogle');
 
-Route::get('/google-auth/callback', function () {
-    $user_google = Socialite::driver('google')->stateless()->user();
+Route::get('/google-auth/callback', [AuthController::class, 'handleGoogleCallback'])->name('handleGoogleCallback');
 
-    $user = User::updateOrCreate([
-        'google_id' => $user_google->id,
-    ], [
-        'name' => $user_google->name,
-        'email' => $user_google->email,
-    ]);
+Route::get('/facebook-auth/redirect', [AuthController::class, 'redirectToFacebook'])->name('redirectToFacebook');
 
-    Auth::login($user);
-
-    return redirect('/home');
-});
+Route::get('/facebook-auth/callback', [AuthController::class, 'handleFacebookCallback'])->name('handleFacebookCallback');
 
 Auth::routes();
 
