@@ -5,10 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-10">
                 <div class="card shadow-lg">
-                    <div class="card-header"><b>{{ __('Register') }}</b></div>
+                    <div class="card-header text-white" style="background: #1C8A5F"><b>{{ __('Register') }}</b></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('register') }}">
                             @csrf
+                            <div class="text-center mb-3">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1605/1605835.png" alt="Imagen"
+                                    width="100" height="100">
+                                <h4 class="h4 mt-2"><b>Crea una cuenta<b></h4>
+                                    <p>¡Comienza tu aventura!</p>
+                            </div>
                             <!-- Name -->
                             <label for="name" class="form-label">{{ __('Name') }}</label>
                             <input id="name" type="name" class="form-control @error('name') is-invalid @enderror"
@@ -52,7 +58,7 @@
                                 <div class="d-grid gap-2">
                                     <button type="submit"
                                         class="btn d-flex justify-content-center align-items-center text-white"
-                                        id="red-bg">
+                                        style="background: #1C8A5F">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                             fill="currentColor" class="bi bi-box-arrow-in-right me-1" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"

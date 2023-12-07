@@ -75,7 +75,7 @@
                 if (theme === 'light') {
                     img.style.filter = 'invert(0)';
                 } else {
-                    img.style.filter = 'invert(1)';
+                    img.style.filter = 'invert(0)';
                 }
             }
 

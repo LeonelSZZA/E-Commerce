@@ -15,7 +15,7 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-    <link rel="shortcut icon" href="{{ asset('assets/img/ferrari-logo.png') }}" type="image/x-icon">
+    <link rel="shortcut icon" href="https://cdn-icons-png.flaticon.com/512/1605/1605835.png" type="image/x-icon">
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
@@ -23,10 +23,10 @@
 
 <body>
     <div id="app">
-        <nav class="navbar sticky-top navbar-expand-lg bg-body-tertiary shadow-sm">
+        <nav class="navbar sticky-top navbar-expand-lg shadow-sm" style="background: #1C8A5F">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('home') }}">
-                    <img class="logotipo-icon" src="{{ asset('assets/img/ferrari-logo.png') }}" alt="Ferrari Logotipo">
+                    <img class="logotipo-icon" src="https://cdn-icons-png.flaticon.com/512/1605/1605835.png" alt="Ferrari Logotipo">
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
@@ -105,13 +105,13 @@
 
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="btn text-white" id="red-bg"
+                                    <a class="btn btn-light text-dark"
                                         href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
                             <li class="nav-item dropdown">
-                                <a class="btn dropdown-toggle text-white" id="red-bg" href="#" role="button"
+                                <a class="btn btn-light dropdown-toggle text-dark" href="#" role="button"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                         fill="currentColor" class="bi bi-person-circle me-1" viewBox="0 0 16 16">
@@ -119,7 +119,7 @@
                                         <path fill-rule="evenodd"
                                             d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z" />
                                     </svg>
-                                    Profile
+                                    Perfil
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
@@ -131,8 +131,7 @@
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
-                                    <li><a class="dropdown-item" href="#">Profile</a></li>
-                                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                                    <li><a class="dropdown-item" href="{{ route('profile') }}">Ir al Perfil</a></li>
                                     <li>
                                         <hr class="dropdown-divider">
                                     </li>
@@ -150,7 +149,7 @@
                                                     <path fill-rule="evenodd"
                                                         d="M11.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 1 0-.708.708L10.293 7.5H1.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708l3-3z" />
                                                 </svg>
-                                                {{ __('Logout') }}
+                                                {{ __('Cerrar Sesión') }}
                                             </a>
                                             <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                                 class="d-none">

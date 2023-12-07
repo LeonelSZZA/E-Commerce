@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow-lg">
-                    <div class="card-header">
+                    <div class="card-header text-white" style="background: #1C8A5F">
                         <b>{{ __('Reset Password') }}</b>
                     </div>
                     <div class="card-body">
@@ -31,7 +31,7 @@
                             @enderror
                             <div class="d-grid gap-2 mt-4">
                                 <button type="submit"
-                                    class="btn d-flex justify-content-center align-items-center text-white" id="red-bg">
+                                    class="btn d-flex justify-content-center align-items-center text-white" style="background: #1C8A5F">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                         fill="currentColor" class="bi bi-send-fill me-1" viewBox="0 0 16 16">
                                         <path

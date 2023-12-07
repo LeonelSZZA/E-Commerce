@@ -5,10 +5,16 @@
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card shadow-lg">
-                    <div class="card-header"><b>{{ __('Login') }}</b></div>
+                    <div class="card-header text-white" style="background: #1C8A5F"><b>{{ __('Login') }}</b></div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('login') }}">
                             @csrf
+                            <div class="text-center mb-3">
+                                <img src="https://cdn-icons-png.flaticon.com/512/1605/1605835.png" alt="Imagen"
+                                    width="100" height="100">
+                                <h4 class="h4 mt-2"><b>Inicia Sesión<b></h4>
+                                    <p>¡Bienvenido de nuevo! Porfavor ingrese sus datos.</p>
+                            </div>
                             <!-- Email Address -->
                             <label for="email" class="form-label">{{ __('Email Address') }}</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
@@ -47,8 +53,7 @@
                             <div class="row mb-0 mt-3">
                                 <div class="d-grid gap-2">
                                     <button type="submit"
-                                        class="btn d-flex justify-content-center align-items-center text-white"
-                                        id="red-bg">
+                                        class="btn d-flex justify-content-center align-items-center text-white" style="background: #1C8A5F">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22"
                                             fill="currentColor" class="bi bi-box-arrow-in-right me-1" viewBox="0 0 16 16">
                                             <path fill-rule="evenodd"
@@ -78,7 +83,8 @@
                             </div>
                         </div>
                         <div class="d-grid gap-2 mb-2">
-                            <a href="/google-auth/redirect" class="btn d-flex justify-content-center align-items-center text-white"
+                            <a href="/google-auth/redirect"
+                                class="btn d-flex justify-content-center align-items-center text-white"
                                 style="background-color: #dd4b39;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                     class="bi bi-google me-2" viewBox="0 0 16 16">
@@ -87,7 +93,8 @@
                                 </svg>
                                 Sign In With Google
                             </a>
-                            <a href="/facebook-auth/redirect" class="btn d-flex justify-content-center align-items-center text-white mt-2"
+                            <a href="/facebook-auth/redirect"
+                                class="btn d-flex justify-content-center align-items-center text-white mt-2"
                                 style="background-color: #3b5998;" type="submit">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="currentColor"
                                     class="bi bi-facebook me-2" viewBox="0 0 16 16">
